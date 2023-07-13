@@ -16,6 +16,7 @@ def initialize_cluster(
     parallel_config: ParallelConfig,
     engine_use_ray: bool = False,
     ray_address: Optional[str] = None,
+    tmp_dir: Optional[str] = None, # add tmp_dir here
 ) -> Tuple[str, List[List[DeviceID]]]:
     """Initialize the distributed cluster probably with Ray.
 
@@ -38,7 +39,8 @@ def initialize_cluster(
                 "Ray is not installed. Please install Ray to use distributed "
                 "serving.")
         # Connect to a ray cluster.
-        ray.init(address=ray_address)
+        ray.init(address=ray_address,
+                 _temp_dir=tmp_dir)
 
     if not parallel_config.worker_use_ray:
         # Initialize cluster locally.
