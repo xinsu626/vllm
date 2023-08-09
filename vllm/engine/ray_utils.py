@@ -44,7 +44,7 @@ def initialize_cluster(
     engine_use_ray: bool = False,
     ray_address: Optional[str] = None,
     tmp_dir: Optional[str] = None, # add tmp_dir here
-) -> Tuple[str, List[List[DeviceID]]]
+) -> Tuple[str, List[List[DeviceID]]]:
     """Initialize the distributed cluster probably with Ray.
 
     Args:
