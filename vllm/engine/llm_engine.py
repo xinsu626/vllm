@@ -214,7 +214,7 @@ class LLMEngine:
         engine_configs = engine_args.create_engine_configs()
         parallel_config = engine_configs[2]
         # Initialize the cluster.
-        distributed_init_method, devices = initialize_cluster(parallel_config, tmp_dir=tmp_dir) # pass tmp_dir
+        distributed_init_method, placement_group = initialize_cluster(parallel_config, tmp_dir=tmp_dir) # pass tmp_dir
         # Create the LLM engine.
         engine = cls(*engine_configs,
                      distributed_init_method,
