@@ -43,8 +43,7 @@ def initialize_cluster(
     parallel_config: ParallelConfig,
     engine_use_ray: bool = False,
     ray_address: Optional[str] = None,
-    tmp_dir: Optional[str] = None, # add tmp_dir here
-):
+    ) -> Tuple[str, Optional["PlacementGroup"]]:
     """Initialize the distributed cluster probably with Ray.
 
     Args:
@@ -67,7 +66,8 @@ def initialize_cluster(
                 "serving.")
         # Connect to a ray cluster.
         ray.init(address=ray_address,
-                 _temp_dir=tmp_dir, ignore_reinit_error=True)
+                 _temp_dir="~/RayTemp",
+                 ignore_reinit_error=True)
 
     if not parallel_config.worker_use_ray:
         # Initialize cluster locally.
