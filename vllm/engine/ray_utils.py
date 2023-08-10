@@ -66,7 +66,7 @@ def initialize_cluster(
                 "serving.")
         # Connect to a ray cluster.
         ray.init(address=ray_address,
-                 _temp_dir="~/RayTemp",
+                 _temp_dir="/home/xinsu/RayTemp",
                  ignore_reinit_error=True)
 
     if not parallel_config.worker_use_ray:
